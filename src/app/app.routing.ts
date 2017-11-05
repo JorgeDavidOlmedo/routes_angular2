@@ -1,5 +1,5 @@
-import { CursoNoEncontradoComponent } from './curso-no-encontrado/curso-no-encontrado.component';
-import { CursoDetalleComponent } from './curso-detalle/curso-detalle.component';
+import { CursoNoEncontradoComponent } from './cursos/curso-no-encontrado/curso-no-encontrado.component';
+import { CursoDetalleComponent } from './cursos/curso-detalle/curso-detalle.component';
 import { LoginComponent } from './login/login.component';
 import { CursosComponent } from './cursos/cursos.component';
 import { HomeComponent } from './home/home.component';
