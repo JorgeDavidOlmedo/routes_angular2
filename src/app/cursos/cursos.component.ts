@@ -1,7 +1,8 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { ActivatedRoute,Router } from '@angular/router';
+
 import { CursosService } from './cursos.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-cursos',
@@ -10,20 +11,20 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class CursosComponent implements OnInit {
 
-  cursos:any[];
-  pagina:number;
-  insripcion: Subscription;
+  cursos: any[];
+  pagina: number;
+  inscricao: Subscription;
 
   constructor(
-    private cursosService:CursosService,
+    private cursosService: CursosService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit() {
     this.cursos = this.cursosService.getCursos();
-   
-    this.insripcion = this.route.queryParams.subscribe(
+
+    this.inscricao = this.route.queryParams.subscribe(
       (queryParams: any) => {
         this.pagina = queryParams['pagina'];
       }
@@ -31,14 +32,13 @@ export class CursosComponent implements OnInit {
   }
 
   ngOnDestroy(){
-    this.insripcion.unsubscribe;
+    this.inscricao.unsubscribe();
   }
 
-  paginaAdd(){
-    this.pagina++;
-    this.router.navigate(['/cursos'],
-    {queryParams: {'pagina': this.pagina}} 
-  );
+  proximaPagina(){
+    //this.pagina++;
+    this.router.navigate(['/cursos'], 
+      {queryParams: {'pagina': ++this.pagina}});
   }
 
 }
